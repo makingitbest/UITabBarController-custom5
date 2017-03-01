@@ -24,7 +24,6 @@
 #import "LoveCityModel.h"
 #import "GCD.h"
 
-
 typedef enum : NSUInteger {
     
     kDetailNetworkingTag = 20,
@@ -73,7 +72,6 @@ typedef enum : NSUInteger {
     self.detailNetworking.tag  = kDetailNetworkingTag;
     [self.detailNetworking startRequest];
     
-    
     NSString     *loveCityString = @"http://act.techcode.com/api/activity/relatives";
     NSDictionary *loveCityDic    = @{@"city":self.loveCity,@"id":self.detailID};
     self.loveCityNetworking      = [Networking networkingWithUrlString:loveCityString
@@ -84,7 +82,6 @@ typedef enum : NSUInteger {
                                                          requestMethod:kPOSTMethodType];
     self.loveCityNetworking.tag  = kLoveCityNetworkingTag;
     [self.loveCityNetworking startRequest];
-    
     
     [self createTableView];
     
@@ -171,10 +168,6 @@ typedef enum : NSUInteger {
         NSDictionary *dictionary = dic[@"data"];
         
         self.activityDetailmodel = [[ActivityDetailModel alloc] initWithDictionary:dictionary];
-        
-//        [self createDataSource];
-//    
-//        [self.tableView reloadData];
 
     }
     
@@ -187,10 +180,7 @@ typedef enum : NSUInteger {
             
             LoveCityModel *model = [[LoveCityModel alloc] initWithDictionary:dic];
             [self.loveCityDatas addObject:model];
-            
-//            [self createLoveCityDataSource];
         }
-        
     }
 }
 
@@ -249,9 +239,7 @@ typedef enum : NSUInteger {
             
              [self.adapters addObject:[CellDataAdapter cellDataAdapter:@"ActivityLoveCityCell" data:model cellHeight:100 cellType:0]];
         }
-        
     }
-    
 }
 
 - (void)dealloc {
